@@ -1,9 +1,20 @@
 function cerificaChute(chute) {
     const numero = +chute
 
-    if(chuteForValido(numero)) {
-        elementoChute.innerHTML += '<div>Valor inválido</div>'
-        return
+    if(chuteForInvalido(numero)) {
+        if (chute.toUpperCase() === "FIM DO JOGO") {
+
+            document.body.innerHTML =
+                `
+                <h2>Game Over!!!</h2>
+                <h3>Pressione o botão para jogar novamente</h3>
+                <button id="jogar-novamente" class="btn-jogar" >Jogar novamente</button>
+                `               
+        } else {
+
+            elementoChute.innerHTML += '<div>Valor Inválido</div>';
+        }
+        
     }
 
     if (numeroMaioOuMenor(numero)) {
@@ -31,7 +42,7 @@ function cerificaChute(chute) {
     }
 }
 
-function chuteForValido(numero) {
+function chuteForInvalido(numero) {
     return Number.isNaN(numero)
 }
 
